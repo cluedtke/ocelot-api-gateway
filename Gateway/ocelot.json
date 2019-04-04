@@ -13,6 +13,19 @@
             "UpstreamPathTemplate": "/api/users/",
             "UpstreamHttpMethod": [ "Get" ]
         },
+        {
+            "DownstreamPathTemplate": "/api/users/{userId}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 52792
+                }
+            ],
+            "UpstreamPathTemplate": "/api/users/{userId}",
+            "UpstreamHttpMethod": [ "Get" ],
+            "Key": "userProfile"
+        },
         // Catalog Service Route
         {
             "DownstreamPathTemplate": "/api/products/",
@@ -38,6 +51,28 @@
             ],
             "UpstreamPathTemplate": "/api/transactions/",
             "UpstreamHttpMethod": [ "Get" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/users/{userId}/transactions",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 52790
+                }
+            ],
+            "UpstreamPathTemplate": "/api/users/{userId}/transactions",
+            "UpstreamHttpMethod": [ "Get" ],
+            "Key": "userTransactions"
+        }
+    ],
+    "Aggregates": [
+        {
+            "ReRouteKeys": [
+                "userTransactions",
+                "userProfile"
+            ],
+            "UpstreamPathTemplate": "/api/user-transactions?userId={userId}"
         }
     ],
     "GlobalConfiguration": {
