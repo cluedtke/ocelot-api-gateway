@@ -1,0 +1,1 @@
+Adapted from https://www.pogsdotnet.com/2018/08/building-simple-api-gateways-with.html
