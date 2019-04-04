@@ -1,0 +1,46 @@
+{
+    "ReRoutes": [
+        // Authentication
+        {
+            "DownstreamPathTemplate": "/api/users/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 52792
+                }
+            ],
+            "UpstreamPathTemplate": "/api/users/",
+            "UpstreamHttpMethod": [ "Get" ]
+        },
+        // Catalog Service Route
+        {
+            "DownstreamPathTemplate": "/api/products/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 52791
+                }
+            ],
+            "UpstreamPathTemplate": "/api/products/",
+            "UpstreamHttpMethod": [ "Get" ]
+        },
+        // Transaction Service Route
+        {
+            "DownstreamPathTemplate": "/api/transactions/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 52790
+                }
+            ],
+            "UpstreamPathTemplate": "/api/transactions/",
+            "UpstreamHttpMethod": [ "Get" ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://localhost:52793"
+    }
+}
